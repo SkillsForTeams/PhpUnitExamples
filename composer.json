@@ -1,0 +1,22 @@
+{
+    "name": "skills-for-teams.com/phpunit-schulung",
+    "description": "Examples für die PHP Unit Schulung",
+    "type": "project",
+    "license": "own",
+    "authors": [
+        {
+            "name": "John Behrens",
+            "email": "john.behrens@skills-for-teams.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PHPUnitSchulung\\": "src/",
+            "PHPUnitSchulung\\Test\\": "test"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.2"
+    }
+}
