@@ -10,10 +10,10 @@ class RectangleCalculatorTest extends TestCase
     $this->assertInstanceOf('PHPUnitSchulung\RectangleCalculator', $rectangleCalculator);
  }  
 
- public function testCalculateRectangleFor2x2() {
+ public function testCalculateRectangleFor4x2() {
      $rectangleCalculator = new RectangleCalculator();
-     $actualResult = $rectangleCalculator->calculateArea(4,1);
-     $this->assertEquals(4,$actualResult, "calculate a 4m area");
+     $actualResult = $rectangleCalculator->calculateArea(4,2);
+     $this->assertEquals(8,$actualResult, "calculate a 4m area");
  }
 
  public function testCalculateSquareForhalv() {
