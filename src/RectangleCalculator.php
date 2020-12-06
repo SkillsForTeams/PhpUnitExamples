@@ -7,6 +7,3 @@ class RectangleCalculator {
         return $length * $width; 
     }
 }
-
-?>
-

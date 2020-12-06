@@ -3,7 +3,9 @@ use PHPUnit\Framework\TestCase;
 use PHPUnitSchulung\FileReader; 
 use PHPUnitSchulung\CsvReader;
 
-
+/**
+ * @covers CsvReader
+ */
 class CsvReaderTest extends TestCase
 {
 
@@ -13,9 +15,10 @@ class CsvReaderTest extends TestCase
         $csvReader = new CsvReader($fileReader);
 
         $csvAsArray = $csvReader->getFileAsArray(__DIR__.'/ProvidedData.csv');
-       // var_dump($csvAsArray);
+       
         $this->assertContains(["1","1","1"], $csvAsArray);
         //$this->assertContains([1,1,1], $csvAsArray);
+        $this->assertContainsEquals([1,1,1], $csvAsArray);
         
     }
 
@@ -37,18 +40,14 @@ class CsvReaderTest extends TestCase
 
         // Configure the stub to throw an exception
         $fileReaderStub->method('getFileContent')
-            ->will($this->throwException(new PHPUnitSchulung\FileAccessException));
+                       ->will($this->throwException(new PHPUnitSchulung\FileAccessException));
     
         $csvReader = new CsvReader($fileReaderStub); 
         $this->expectException(PHPUnitSchulung\FileAccessException::class); 
         $csvAsArray = $csvReader->getFileAsArray(__DIR__.'/iAmNotHere');  
     }
 
-
-    /**
-     * Mock objects can be used to observe the class behavior
-     */
-    public function testGetFileAsArrayWitMock() {
+    private function getFileReaderMock() {
         $fileReaderMock = $this->createMock(FileReader::class);
 
         //Configure the Mock to expect to be called 
@@ -56,7 +55,14 @@ class CsvReaderTest extends TestCase
         $fileReaderMock->expects($this->once())
                         ->method('getFileContent')
                         ->with(__DIR__.'/bullshitfile');
-                      
+        return $fileReaderMock;
+    }
+
+    /**
+     * Mock objects can be used to observe the class behavior
+     */
+    public function testGetFileAsArrayWitMock() {
+        $fileReaderMock = $this->getFileReaderMock();                      
         $csvReader = new CsvReader($fileReaderMock); 
         $csvAsArray = $csvReader->getFileAsArray(__DIR__.'/bullshitfile');
         

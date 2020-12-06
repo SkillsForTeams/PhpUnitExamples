@@ -1,7 +1,9 @@
 <?php
 use PHPUnit\Framework\TestCase;
 use PHPUnitSchulung\RectangleCalculator;
-
+/**
+ * @covers RectangleCalculator
+ */
 class RectangleCalculatorProvidedTest extends TestCase
 {
 
@@ -11,9 +13,10 @@ class RectangleCalculatorProvidedTest extends TestCase
  }  
 
  /**
-  * @dataProvider providerRectangleDataArray
+  * @dataProvider providerRectangleDataArray 
   */
  public function testCalculateRectangleAreaDataProvider($sideA, $sideB, $expectedResult) {
+
      $rectangleCalculator = new RectangleCalculator();
      $actualResult = $rectangleCalculator->calculateArea($sideA, $sideB);
      $this->assertEquals($expectedResult ,$actualResult, "calcualate $sideA, $sideB ");
@@ -35,6 +38,7 @@ class RectangleCalculatorProvidedTest extends TestCase
   * @dataProvider providerRectangleDataNamedArray
   */
 public function testCalculateRectangleAreaDataProviderNamed($sideA, $sideB, $expectedResult) {
+
    $rectangleCalculator = new RectangleCalculator();
    $actualResult = $rectangleCalculator->calculateArea($sideA, $sideB);
    $this->assertEquals($expectedResult ,$actualResult, "calcualate $sideA, $sideB ");
@@ -54,6 +58,7 @@ public function providerRectangleDataNamedArray() {
   * @dataProvider providerRectangleCsv
   */
 public function testCalculateRectangleCsvProvider($sideA, $sideB, $expectedResult) {
+   
    $rectangleCalculator = new RectangleCalculator();
    $actualResult = $rectangleCalculator->calculateArea($sideA, $sideB);
    $this->assertEquals($expectedResult ,$actualResult, "calcualate $sideA, $sideB ");
@@ -74,7 +79,7 @@ public function providerRectangleCsv() {
   * @dataProvider providerRectangleDataNamedArray
   * @dataProvider providerRectangleDataArray
   */
-public function testMultipleDataProviders($sideA, $sideB, $expectedResult) {
+public function testMultipleDataProviders($sideA, $sideB, $expectedResult) {   
    $rectangleCalculator = new RectangleCalculator();
    $actualResult = $rectangleCalculator->calculateArea($sideA, $sideB);
    $this->assertEquals($expectedResult ,$actualResult, "calcualate $sideA, $sideB ");
@@ -82,7 +87,4 @@ public function testMultipleDataProviders($sideA, $sideB, $expectedResult) {
 
 // more providers 
 // - combination of @depends and provider 
-
-
-
 }

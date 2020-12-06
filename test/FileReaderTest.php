@@ -3,6 +3,9 @@ use PHPUnit\Framework\TestCase;
 use PHPUnitSchulung\FileAccessException;
 use PHPUnitSchulung\FileReader;
 
+/**
+ * @covers FileReader
+ */
 class FileReaderTest extends TestCase
 {
 
@@ -43,6 +46,4 @@ class FileReaderTest extends TestCase
    }
 
 
-
-    // $this->expectOutputString('bar')
 }
