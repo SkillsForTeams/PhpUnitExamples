@@ -27,7 +27,7 @@ test:phpunit-php7:
   - vendor/bin/phpunit
   allow_failure: true
 
-test:phpunit-php7:  
+test:phpunit-php8:  
   image: php:8.0
   script:
   - vendor/bin/phpunit
