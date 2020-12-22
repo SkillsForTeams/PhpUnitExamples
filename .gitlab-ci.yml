@@ -21,7 +21,7 @@ before_script:
 # Install all project dependencies
 - php composer.phar install
 
-test:behat:
+test:phpunit-php7:  
   script:
   - vendor/bin/phpunit
   allow_failure: true
