@@ -1,17 +1,9 @@
 # Select an image from https://hub.docker.com/_/php/.
-<<<<<<< HEAD
 image: php:7.6
 
 stages:
  - test
  
-=======
-image: php:7.4
-
-stages:
-  - test
-
->>>>>>> 240235d1fe948d892709947f75364d98df043018
 # Select what we should cache
 cache:
   paths:
@@ -29,26 +21,20 @@ before_script:
 # Install all project dependencies
 - php composer.phar install
 
-<<<<<<< HEAD
-test:phpunit:
-  image: php:8.0
-  script:
-  - vendor/bin/phpunit
-
-test:phpstan:  
-  image: php:8.0
-  script:
-  - - vendor/bin/phpstan analyse /src /test --error-format=gitlab
-=======
 test:phpunit-php7:  
   image: php:7.4
   script:
   - vendor/bin/phpunit
-  allow_failure: true
+  allow_failure: false
 
 test:phpunit-php8:  
   image: php:8.0
   script:
   - vendor/bin/phpunit
->>>>>>> 240235d1fe948d892709947f75364d98df043018
+  allow_failure: false
+
+test:phpstan:  
+  image: php:8.0
+  script:
+  - vendor/bin/phpstan analyse vendor/bin/phpstan analyse src test --error-format=gitlab
   allow_failure: true
