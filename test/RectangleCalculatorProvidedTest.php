@@ -1,6 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 use PHPUnitSchulung\RectangleCalculator;
+
 /**
  * @covers RectangleCalculator
  */

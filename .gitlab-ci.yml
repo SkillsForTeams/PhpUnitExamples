@@ -1,0 +1,33 @@
+# Select an image from https://hub.docker.com/_/php/.
+image: php:7.6
+
+stages:
+ - test
+ 
+# Select what we should cache
+cache:
+  paths:
+  - vendor/
+
+before_script:
+# Install git, the php image doesn't have installed
+- apt-get update -yqq
+- apt-get install git -yqq
+
+# Install mysql driver
+- docker-php-ext-install pdo_mysql
+# Install composer
+- curl -sS https://getcomposer.org/installer | php
+# Install all project dependencies
+- php composer.phar install
+
+test:phpunit:
+  image: php:8.0
+  script:
+  - vendor/bin/phpunit
+
+test:phpstan:  
+  image: php:8.0
+  script:
+  - - vendor/bin/phpstan analyse /src /test --error-format=gitlab
+  allow_failure: true
