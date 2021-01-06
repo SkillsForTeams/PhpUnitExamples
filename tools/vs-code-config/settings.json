@@ -1,0 +1,9 @@
+{
+    "editor.fontSize": 22,
+    "window.zoomLevel": 1,
+    "php.executablePath": "C:\\data\\dev\\tools\\php.bat",
+    "remote.WSL.debug": true,
+    "php.validate.executablePath": "C:\\data\\dev\\tools\\php.bat",
+    "php.suggest.basic" : false,
+    "php.validate.enable": true
+}
